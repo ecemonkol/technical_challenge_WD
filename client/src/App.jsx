@@ -1,18 +1,17 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
+// src/App.js
+import React, { useState } from "react";
+import PhoneList from "./components/PhoneList";
+import PhoneDetails from "./components/PhoneDetails";
 
-function App() {
-  const [count, setCount] = useState(0);
+const App = () => {
+  const [selectedPhoneId, setSelectedPhoneId] = useState(null);
 
   return (
-    <>
-      <div>
-        <p>psikolojim bozuk</p>
-      </div>
-    </>
+    <div>
+      <PhoneList onSelectPhone={setSelectedPhoneId} />
+      {selectedPhoneId && <PhoneDetails phoneId={selectedPhoneId} />}
+    </div>
   );
-}
+};
 
 export default App;
