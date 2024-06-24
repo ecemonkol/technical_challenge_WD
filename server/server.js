@@ -1,20 +1,16 @@
 const express = require("express");
+const cors = require("cors");
 const app = express();
 const port = 3001;
 
 const phones = require("./data/phones.json");
 
-// Root route to provide a welcome message
-app.get("/", (req, res) => {
-  res.send("Welcome to The Phone Cave API!");
-});
+app.use(cors()); // Add this line
 
-// Route to get all phones
 app.get("/phones", (req, res) => {
-  res.json(phones.price);
+  res.json(phones);
 });
 
-// Route to get a phone by id
 app.get("/phones/:id", (req, res) => {
   const phone = phones.find((p) => p.id === parseInt(req.params.id));
   if (phone) {
